@@ -35,7 +35,7 @@ public class Registration extends HttpServlet {
 			String confirmPassword = request.getParameter("confirmpassword");
 		
 			if(password.equals(confirmPassword)) {
-				String sql = "INSERT INTO USER(`username`, `userfirstname`, `userlastname`, `useremail`, `userpassword`, `userroles`) VALUES (?,?,?,?,?,'User')";
+				String sql = "INSERT INTO USERS(`username`, `userfirstname`, `userlastname`, `useremail`, `userpassword`, `userroles`) VALUES (?,?,?,?,?,'User')";
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				
 				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/catcharide?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
