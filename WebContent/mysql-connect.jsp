@@ -4,9 +4,9 @@
 <%@page import="java.sql.Connection"%>
 <%
 String id = request.getParameter("userid");
-String driver = "com.mysql.jdbc.Driver";
+String driver = "com.mysql.cj.jdbc.Driver";
 String connectionUrl = "jdbc:mysql://localhost:3306/";
-String database = "car";
+String database = "catcharide";
 String userid = "root";
 String password = "";
 try {
