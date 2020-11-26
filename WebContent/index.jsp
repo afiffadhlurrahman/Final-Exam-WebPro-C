@@ -1,41 +1,36 @@
-<%@ include file = "include/mysql-connect.jsp" %>
+<%@ include file="include/mysql-connect.jsp"%>
 
 <%@ include file="include/header.jsp"%>
 <title>Catch-a-Rides</title>
 <%@ include file="include/navbar.jsp"%>
 
 <div class="container">
-	<main role="main" class="pb-3">
-		<h1>Retrieve data from database in jsp</h1>
-		<table border="1">
-			<tr>
-				<td>ID</td>
-				<td>Name</td>
-				<td>Desc</td>
-				<td>Logo</td>
-			</tr>
-			<%
-				try {
-				connection = DriverManager.getConnection(connectionUrl + database, userid, password);
-				statement = connection.createStatement();
-				String sql = "select * from brand";
-				resultSet = statement.executeQuery(sql);
-				while (resultSet.next()) {
-			%>
-			<tr>
-				<td><%=resultSet.getString("BRANDID")%></td>
-				<td><%=resultSet.getString("BRANDNAME")%></td>
-				<td><%=resultSet.getString("BRANDDESC")%></td>
-				<td><%=resultSet.getString("BRANDLOGO")%></td>
-			</tr>
-			<%
-				}
-			connection.close();
-			} catch (Exception e) {
-			e.printStackTrace();
-			}
-			%>
-		</table>
+	<main class="pb-3">
+		<div class="article">
+		
+			<div class="billboard">
+				<img src="/img/billboard.jpg" />
+				<div class="overlay">
+					<h1>Catch' a Rides Here, Folks</h1>
+				</div>
+			</div>
+
+			<div class="comment">
+				<h1>What Clients Says:</h1>
+				<div class="box">
+					<p>Car in nice condition. <br><B>-Raferto</B></p>
+				</div>
+
+				<div class="box">
+					<p>great car. <br><B>-Elby</B></p>
+				</div>
+
+				<div class="box">
+					<p>This is a comment :v <br><B>-Pipu</B></p>
+				</div>
+			</div>
+			
+		</div>
 	</main>
 </div>
 
