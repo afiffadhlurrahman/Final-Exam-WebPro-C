@@ -1,4 +1,4 @@
-<%@ include file = "mysql-connect.jsp" %>
+<%@ include file = "include/mysql-connect.jsp" %>
 
 <!DOCTYPE html>
 <html>

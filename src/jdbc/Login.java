@@ -7,42 +7,22 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
-import java.util.Base64;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Registration")
-public class Registration extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Registration() {
+    public Login() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-	
-	private String getHash(String password) {
-		MessageDigest digest = null;
-		try {
-		    digest = MessageDigest.getInstance("SHA-256");
-		} catch (NoSuchAlgorithmException e) {
-		    // TODO Auto-generated catch block
-		    e.printStackTrace();
-		}
-		byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-		String encoded = Base64.getEncoder().encodeToString(hash);
-		
-		return encoded;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,8 +35,6 @@ public class Registration extends HttpServlet {
 			String confirmPassword = request.getParameter("confirmpassword");
 		
 			if(password.equals(confirmPassword)) {
-				password = getHash(password);
-				
 				String sql = "INSERT INTO USERS(`username`, `userfirstname`, `userlastname`, `useremail`, `userpassword`, `userroles`) VALUES (?,?,?,?,?,'User')";
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				
