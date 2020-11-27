@@ -19,10 +19,10 @@
 			</div>
 			<div class="form-group row">
 				<div class="col-3">
-					<label for="inputTransmission" class="col-sm-2 col-form-label">Transmission</label>
+					<label for="inputTransmition" class="col-sm-2 col-form-label">Transmition</label>
 				</div>
 				<div class="col-6">
-				      <input type="transmission" class="form-control" id="inputTransmission" placeholder="Car Transmission">
+				      <input type="transmition" class="form-control" id="inputTransmition" placeholder="Car Transmition">
 				</div>
 			</div>
 			<div class="form-group row">

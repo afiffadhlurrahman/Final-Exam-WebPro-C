@@ -34,4 +34,14 @@
 		<servlet-name>logout</servlet-name>
 		<url-pattern>/logoutServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>createcar</servlet-name>
+		<servlet-class>jdbc.CreateCar</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>createcar</servlet-name>
+		<url-pattern>/createcarServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
