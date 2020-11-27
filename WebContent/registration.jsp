@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="include/header.jsp"%>
 
-	<title>Login</title>
+	<title>Register</title>
 	<link rel="stylesheet" href="css/authstyle.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
