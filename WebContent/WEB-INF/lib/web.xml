@@ -6,22 +6,22 @@
 	<display-name>catcharide</display-name>
 
 	<servlet>
-		<servlet-name>reg</servlet-name>
+		<servlet-name>regis</servlet-name>
 		<servlet-class>jdbc.Registration</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>reg</servlet-name>
+		<servlet-name>regis</servlet-name>
 		<url-pattern>/regServlet</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>log</servlet-name>
+		<servlet-name>login</servlet-name>
 		<servlet-class>jdbc.Login</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>log</servlet-name>
+		<servlet-name>login</servlet-name>
 		<url-pattern>/logServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

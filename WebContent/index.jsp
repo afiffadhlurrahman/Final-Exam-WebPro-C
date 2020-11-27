@@ -4,6 +4,10 @@
 <title>Catch-a-Rides</title>
 <%@ include file="include/header2.jsp"%>
 
+<% if(session != null) { 
+	%> <h1>Welcome, <%=session.getAttribute("firstname") 
+			+ " " + session.getAttribute("lastname")%> </h1> <%
+} %>
 
 <div class="billboard">
 	<img src="img/billboard.jpg" />

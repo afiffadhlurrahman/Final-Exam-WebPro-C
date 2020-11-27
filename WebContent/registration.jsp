@@ -8,6 +8,11 @@
 <title>Register</title>
 </head>
 <body>
+	<% String status = (String) request.getAttribute("status"); %>
+	<% if (status != null) { %>
+		<script> alert("<%=status%>")</script>
+	<% } %>
+	
 	<div align="center">
 		<form action="Registration" method="post">
 			Username : <input type="text" name="username" required><br>
@@ -15,7 +20,9 @@
 			Lastname : <input type="text" name="lastname" required><br>
 			Email : <input type="email" name="email" required><br>
 			Password : <input type="password" name="password" required><br>
-			Confirm Password : <input type="password" name="confirmpassword" required><br>
+			Confirm Password : <input type="password" name="confirmpassword" required><br>	
+			
+			 
 			<input type="submit" value="Register">
 		</form>
 	</div>
