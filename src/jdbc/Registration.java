@@ -52,7 +52,7 @@ public class Registration extends HttpServlet {
 				ps.executeUpdate();
 				
 				request.setAttribute("status", "Your Account has been created!");
-				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");				
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");	
 				rd.forward(request, response);
 			}
 			else {

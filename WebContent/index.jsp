@@ -6,7 +6,7 @@
 
 <% if(session != null && session.getAttribute("username") != null) { 
 	%> <h1>Welcome, <%=session.getAttribute("firstname") 
-			+ " " + session.getAttribute("lastname")%> </h1> <%
+			+ " " + session.getAttribute("lastname")%> </h1><br> <%
 } %>
 
 <div class="billboard">
