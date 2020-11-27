@@ -11,15 +11,16 @@
 	<% String status = (String) request.getAttribute("status"); %>
 	<% if (status != null) { %>
 		<script> alert("<%=status%>")</script>
-	<% } %>
+	<% request.setAttribute("status", null); 
+	} %>
 		
 	<div class="split left text-center">
 		<div class='box'>
-			<form action="Login" method="post">
+			<form action="Registration" method="post">
 				<div class="form-group">
 					<h1 class="h3 mb-3 font-weight-normal">Register</h1>
 
-					<div class"form-group"">
+					<div class="form-group">
 						<div class="row">
 		                	<div class="col-md-6">
 								<label for="firstname" class="sr-only">Username or Email</label> 
