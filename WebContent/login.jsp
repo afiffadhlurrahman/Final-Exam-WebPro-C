@@ -11,7 +11,8 @@
 	<% String status = (String) request.getAttribute("status"); %>
 	<% if (status != null) { %>
 		<script> alert("<%=status%>")</script>
-	<% } %>
+	<% status = null;
+	} %>
 
 	<div class="split left text-center">
 		<div class='box'>

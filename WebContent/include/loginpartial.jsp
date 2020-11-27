@@ -7,7 +7,9 @@
         <a class="nav-link text-dark" href="#">Hello <%=session.getAttribute("email") %></a>
     </li>
     <li class="nav-item">
-    	<a class="nav-link text-dark" href="#">Logout</a>
+    	<form action="Logout" method="post">
+    		<button class="nav-link btn btn-link text-dark" type="submit">Logout</button>
+    	</form>
     </li>
     <%} else {%>
 	    <li class="nav-item">
