@@ -55,7 +55,7 @@
 					</td>
 					<td>
 		            	<a href="editcar.jsp?carid=<%=resultSet.getString("CARID")%>" class="btn btn-success btn m-1" role="button">Edit</a>
-						<a href="deletecar.jsp" class="btn btn-danger btn " role="button">Delete</a>    
+						<a href="deletecar.jsp?carid=<%=resultSet.getString("CARID")%>" class="btn btn-danger btn " role="button">Delete</a>    
 		            </td>
 				</tr>
 				<%

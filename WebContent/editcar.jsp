@@ -100,23 +100,11 @@
 					<label for="inputFuel" class="col-sm-5 col-form-label">Fuel Type</label>
 				</div>
 				<div class="col-6">
-				      <select class="form-control" id="fuel" name="fuel">
-						<%
-							try {
-							connection = DriverManager.getConnection(connectionUrl + database, userid, password);
-							statement = connection.createStatement();
-							String sqlFuel = "select * from car";
-							ResultSet resultFuel = statement.executeQuery(sqlFuel);
-							while (resultFuel.next()) {
-						%>
-							<option <%if(resultSet.getString("CARFUELTYPE").equals(resultFuel.getString("CARFUELTYPE"))){ %> <%="selected"%> <%}%> value="<%=resultFuel.getInt("CARID")%>"><%=resultFuel.getString("CARFUELTYPE")%></option>
-						<%
-							}
-							connection.close();
-							} catch (Exception e) {
-							e.printStackTrace();
-							}
-						%>	
+				    <select class="form-control" id="fuel" name="fuel">
+						<option <%if(resultSet.getString("CARFUELTYPE").equals("Diesel")){ %> <%="selected"%> <%}%> value="Diesel">Diesel</option>
+						<option <%if(resultSet.getString("CARFUELTYPE").equals("Ethanol")){ %> <%="selected"%> <%}%> value="Ethanol">Ethanol</option>
+						<option <%if(resultSet.getString("CARFUELTYPE").equals("Bio Diesel")){ %> <%="selected"%> <%}%> value="Bio Diesel">Bio Diesel</option>
+						<option <%if(resultSet.getString("CARFUELTYPE").equals("Electric")){ %> <%="selected"%> <%}%> value="Electric">Electric</option>
 					</select>
 				</div>
 			</div>
