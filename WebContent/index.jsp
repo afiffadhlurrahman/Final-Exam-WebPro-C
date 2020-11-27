@@ -4,7 +4,7 @@
 <title>Catch-a-Rides</title>
 <%@ include file="include/header2.jsp"%>
 
-<% if(session != null) { 
+<% if(session != null && session.getAttribute("username") != null) { 
 	%> <h1>Welcome, <%=session.getAttribute("firstname") 
 			+ " " + session.getAttribute("lastname")%> </h1> <%
 } %>

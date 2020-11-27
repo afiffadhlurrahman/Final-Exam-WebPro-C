@@ -20,7 +20,7 @@
                     </ul>
                 </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"> 
-                    
+                    <%@ include file="loginpartial.jsp" %>
                 </div>
             </div>
         </nav>
