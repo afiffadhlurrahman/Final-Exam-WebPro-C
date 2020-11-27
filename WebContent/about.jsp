@@ -6,7 +6,7 @@
 
 <h1>Author's</h1>
 <div class="about">
-    <img src="/img/about.png" />
+    <img src="img/about.png" />
 </div>
 
 <%@ include file="include/footer.jsp"%>

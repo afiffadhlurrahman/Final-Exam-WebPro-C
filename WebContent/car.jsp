@@ -4,6 +4,7 @@
 <title>Catch-a-Rides</title>
 <%@ include file="include/header2.jsp"%>
 
+
 <body>
 	<div class="container row p-0 m-0">
 		<div class="col-9">
@@ -17,7 +18,7 @@
 			<table class="table table-striped border">
 				<tr class="table-secondary">
 					<th>
-						ID
+						No
 					</th>
 					<th>
 						Name
@@ -29,6 +30,18 @@
 						Model
 					</th>
 					<th>
+						Brand
+		            </th>
+		            <th>
+						Type
+		            </th>
+		            <th>
+						Fuel Type
+		            </th>
+		            <th>
+						Capacity
+		            </th>
+					<th>
 		
 		            </th>
 				</tr>
@@ -36,7 +49,7 @@
 					try {
 					connection = DriverManager.getConnection(connectionUrl + database, userid, password);
 					statement = connection.createStatement();
-					String sql = "select * from car";
+					String sql = "select * from car,brand,cartype where car.brandid = brand.brandid and car.cartypeid = cartype.cartypeid";
 					resultSet = statement.executeQuery(sql);
 					while (resultSet.next()) {
 				%>
@@ -54,8 +67,20 @@
 						<%=resultSet.getString("CARMODELTYPE")%>
 					</td>
 					<td>
+						<%=resultSet.getString("BRANDNAME")%>
+					</td>
+					<td>
+						<%=resultSet.getString("CARTYPENAME")%>
+					</td>
+					<td>
+						<%=resultSet.getString("CARFUELTYPE")%>
+					</td>
+					<td align="center">
+						<%=resultSet.getString("CARCAPACITY")%>
+					</td>
+					<td>
+						<a href="#" class="btn btn-primary btn m-1" role="button">Rent</a>
 		            	<a href="editcar.jsp?carid=<%=resultSet.getString("CARID")%>" class="btn btn-success btn m-1" role="button">Edit</a>
-						<a href="deletecar.jsp?carid=<%=resultSet.getString("CARID")%>" class="btn btn-danger btn " role="button">Delete</a>    
 		            </td>
 				</tr>
 				<%
