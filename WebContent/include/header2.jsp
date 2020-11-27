@@ -12,10 +12,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark">Home</a>
+                            <a href='index.jsp' class="nav-link text-dark">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark">Car</a>
+                            <a href='car.jsp' class="nav-link text-dark">Car</a>
                         </li>
                     </ul>
                 </div>
