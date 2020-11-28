@@ -1,5 +1,6 @@
 package servlet;
 
+import servlet.DbConnection;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,7 +48,7 @@ public class CreateCar extends HttpServlet {
 			int cartypeid = Integer.parseInt(request.getParameter("type"));
 			int capacity = Integer.parseInt(request.getParameter("capacity"));
 			String fueltype = request.getParameter("fuel"); 
-			String sql = "INSERT INTO CAR(`brandid`,`cartypeid`,`carname`, `cartransmition`, `carmodeltype`,`carcapacity`,`carfueltype`) VALUES (?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO CAR(brandid,cartypeid,carname, cartransmition, carmodeltype,carcapacity,carfueltype) VALUES (?,?,?,?,?,?,?)";
 			
 			Connection conn = new DbConnection().getConn();
 			PreparedStatement ps = conn.prepareStatement(sql);

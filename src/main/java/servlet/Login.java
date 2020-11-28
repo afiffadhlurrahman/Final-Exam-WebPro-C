@@ -1,5 +1,6 @@
 package servlet;
 
+import servlet.DbConnection;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,7 +38,7 @@ public class Login extends HttpServlet {
 			HashController enc_password = new HashController(password);
 			password = enc_password.getHashPassword();
 
-			String sql = "SELECT * FROM USERS WHERE username = ? or useremail = ?";
+			String sql = "SELECT * FROM USERS WHERE ( username = ? ) OR ( useremail = ? )";
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			ps.setString(1, useridentifier);

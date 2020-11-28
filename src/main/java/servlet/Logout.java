@@ -1,5 +1,6 @@
 package servlet;
 
+import servlet.DbConnection;
 import java.io.IOException;
 
 import javax.servlet.ServletException;

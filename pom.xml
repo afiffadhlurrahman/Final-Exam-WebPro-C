@@ -36,6 +36,15 @@
         <artifactId>tomcat-jsp-api</artifactId>
         <version>${tomcat.version}</version>
     </dependency>
+<<<<<<< Updated upstream
+=======
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>3.0-alpha-1</version>
+        <scope>provided</scope>
+    </dependency>
+>>>>>>> Stashed changes
   </dependencies>
   <build>
     <finalName>embeddedTomcatSample</finalName>
@@ -62,6 +71,29 @@
                 </execution>
             </executions>
         </plugin>
+<<<<<<< Updated upstream
+=======
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals><goal>copy</goal></goals>
+                    <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                                <groupId>com.heroku</groupId>
+                                <artifactId>webapp-runner</artifactId>
+                                <version>9.0.30.0</version>
+                                <destFileName>webapp-runner.jar</destFileName>
+                            </artifactItem>
+                        </artifactItems>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+>>>>>>> Stashed changes
     </plugins>
   </build>
 </project>

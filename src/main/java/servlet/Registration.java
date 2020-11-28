@@ -1,5 +1,6 @@
 package servlet;
 
+import servlet.DbConnection;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,7 +39,7 @@ public class Registration extends HttpServlet {
 				HashController enc_password = new HashController(password);
 				password = enc_password.getHashPassword();
 				
-				String sql = "INSERT INTO USERS(`username`, `userfirstname`, `userlastname`, `useremail`, `userpassword`, `userroles`) VALUES (?,?,?,?,?,'User')";
+				String sql = "INSERT INTO USERS(username, userfirstname, userlastname, useremail, userpassword, userroles) VALUES (?,?,?,?,?,'User')";
 				
 				Connection conn = new DbConnection().getConn();
 				PreparedStatement ps = conn.prepareStatement(sql);

@@ -50,19 +50,18 @@
 				<div class="col-6">
 				     	<select class="form-control" id="brand" name="brand">
 						<%
+<<<<<<< Updated upstream:src/main/webapp/editcar.jsp
 							try {
 							Connection connection = new DbConnection().getConn();
 							Statement statement = connection.createStatement();
+=======
+>>>>>>> Stashed changes:WebContent/editcar.jsp
 							String sqlBrand = "select * from brand";
 							ResultSet resultBrand = statement.executeQuery(sqlBrand);
 							while (resultBrand.next()) {
 						%>
 							<option <%if(resultSet.getInt("BRANDID") == resultBrand.getInt("BRANDID")){ %> <%="selected"%> <%}%> value="<%=resultBrand.getInt("BRANDID")%>"><%=resultBrand.getString("BRANDNAME")%></option>
 						<%
-							}
-							connection.close();
-							} catch (Exception e) {
-							e.printStackTrace();
 							}
 						%>	
 					</select>
@@ -75,19 +74,18 @@
 				<div class="col-6">
 				      <select class="form-control" id="type" name="type">
 						<%
+<<<<<<< Updated upstream:src/main/webapp/editcar.jsp
 							try {
 							Connection connection = new DbConnection().getConn();
 							Statement statement = connection.createStatement();
+=======
+>>>>>>> Stashed changes:WebContent/editcar.jsp
 							String sqlType = "select * from cartype";
 							ResultSet resultType = statement.executeQuery(sqlType);
 							while (resultType.next()) {
 						%>
 							<option <%if(resultSet.getInt("CARTYPEID") == resultType.getInt("CARTYPEID")){ %> <%="selected"%> <%}%> value="<%=resultType.getInt("CARTYPEID")%>"><%=resultType.getString("CARTYPENAME")%></option>
 						<%
-							}
-							connection.close();
-							} catch (Exception e) {
-							e.printStackTrace();
 							}
 						%>	
 					</select>
