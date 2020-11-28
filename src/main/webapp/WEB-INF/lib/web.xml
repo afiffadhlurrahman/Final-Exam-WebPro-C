@@ -7,11 +7,7 @@
 
 	<servlet>
 		<servlet-name>regis</servlet-name>
-<<<<<<< Updated upstream:src/main/webapp/WEB-INF/lib/web.xml
-		<servlet-class>src.main.servlet.Registration</servlet-class>
-=======
 		<servlet-class>main.servlet.Registration</servlet-class>
->>>>>>> Stashed changes:WebContent/WEB-INF/lib/web.xml
 	</servlet>
 
 	<servlet-mapping>
@@ -21,11 +17,7 @@
 	
 	<servlet>
 		<servlet-name>login</servlet-name>
-<<<<<<< Updated upstream:src/main/webapp/WEB-INF/lib/web.xml
-		<servlet-class>src.main.servlet.Login</servlet-class>
-=======
 		<servlet-class>main.servlet.Login</servlet-class>
->>>>>>> Stashed changes:WebContent/WEB-INF/lib/web.xml
 	</servlet>
 
 	<servlet-mapping>
@@ -35,11 +27,7 @@
 	
 	<servlet>
 		<servlet-name>logout</servlet-name>
-<<<<<<< Updated upstream:src/main/webapp/WEB-INF/lib/web.xml
-		<servlet-class>src.main.servlet.Logout</servlet-class>
-=======
 		<servlet-class>main.servlet.Logout</servlet-class>
->>>>>>> Stashed changes:WebContent/WEB-INF/lib/web.xml
 	</servlet>
 
 	<servlet-mapping>
@@ -49,11 +37,7 @@
 	
 	<servlet>
 		<servlet-name>createcar</servlet-name>
-<<<<<<< Updated upstream:src/main/webapp/WEB-INF/lib/web.xml
-		<servlet-class>src.main.servlet.CreateCar</servlet-class>
-=======
 		<servlet-class>main.servlet.CreateCar</servlet-class>
->>>>>>> Stashed changes:WebContent/WEB-INF/lib/web.xml
 	</servlet>
 
 	<servlet-mapping>
@@ -63,11 +47,7 @@
 	
 	<servlet>
 		<servlet-name>editcar</servlet-name>
-<<<<<<< Updated upstream:src/main/webapp/WEB-INF/lib/web.xml
-		<servlet-class>src.main.servlet.EditCar</servlet-class>
-=======
 		<servlet-class>main.servlet.EditCar</servlet-class>
->>>>>>> Stashed changes:WebContent/WEB-INF/lib/web.xml
 	</servlet>
 	
 	<servlet-mapping>
