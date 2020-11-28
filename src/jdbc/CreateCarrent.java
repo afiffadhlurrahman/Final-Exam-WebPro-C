@@ -1,5 +1,6 @@
 package jdbc;
 
+import jdbc.DbConnection;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -40,14 +41,12 @@ public class CreateCarrent extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			int carId = Integer.parseInt(request.getParameter("car"));
+			Integer carId = (Integer) Integer.parseInt(request.getParameter("car"));
 			int tenant = Integer.parseInt(request.getParameter("tenant"));
 			String license = request.getParameter("license");
 			int year = Integer.parseInt(request.getParameter("year"));
 			int price = Integer.parseInt(request.getParameter("price"));
-			int status = 1; 
-			
-			String sql = "INSERT INTO CARRENT(`carid`,`userid`,`carlicencenumber`, `carrentprice`, `carrentyear`,`carrentstatus`) VALUES (?,?,?,?,?,?)";
+			String sql = "INSERT INTO CARRENT(carid,userid,carlicencenumber, carrentprice, carrentyear,carrentstatus) VALUES (?,?,?,?,?,TRUE)";
 			
 			Connection conn = new DbConnection().getConn();
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -57,7 +56,6 @@ public class CreateCarrent extends HttpServlet {
 			ps.setString(3, license);
 			ps.setInt(4, year);
 			ps.setInt(5, price);
-			ps.setInt(6, status);
 			
 			ps.executeUpdate();
 			

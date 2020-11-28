@@ -11,7 +11,7 @@
 		String carId1 = request.getParameter("carrentid");
 		connection = DriverManager.getConnection(connectionUrl + database, userid, password);
 		statement = connection.createStatement();
-		String sql = "select * from car,cartype,user,carrent where car.cartypeid = cartype.cartypeid and user.userid = carrent.userid and carrent.carid=car.carid and carrent.carrentid = "+ carId1;
+		String sql = "select * from car,cartype,users,carrent where car.cartypeid = cartype.cartypeid and users.userid = carrent.userid and carrent.carid=car.carid and carrent.carrentid = "+ carId1;
 		resultSet = statement.executeQuery(sql);
 		resultSet.next();
 	%>
