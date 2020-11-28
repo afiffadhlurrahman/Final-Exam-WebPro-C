@@ -31,8 +31,8 @@
 				<div class="col-6">
 					<select class="form-control" id="transmition" name="transmition">
 						<option <%if(resultSet.getString("CARTRANSMITION").equals("Manual")){ %> <%="selected"%> <%}%> value="Manual">Manual</option>
-  						<option <%if(resultSet.getString("CARTRANSMITION").equals("Matic")){ %> <%="selected"%> <%}%> value="Matic">Matic</option>		
-					</select>				      
+  						<option <%if(resultSet.getString("CARTRANSMITION").equals("Automatic")){ %> <%="selected"%> <%}%> value="Automatic">Automatic</option>		
+					</select>   
 				</div>
 			</div>
 			<div class="form-group row">
@@ -51,9 +51,12 @@
 				     	<select class="form-control" id="brand" name="brand">
 						<%
 <<<<<<< Updated upstream:src/main/webapp/editcar.jsp
+<<<<<<< Updated upstream:src/main/webapp/editcar.jsp
 							try {
 							Connection connection = new DbConnection().getConn();
 							Statement statement = connection.createStatement();
+=======
+>>>>>>> Stashed changes:WebContent/editcar.jsp
 =======
 >>>>>>> Stashed changes:WebContent/editcar.jsp
 							String sqlBrand = "select * from brand";
@@ -62,7 +65,11 @@
 						%>
 							<option <%if(resultSet.getInt("BRANDID") == resultBrand.getInt("BRANDID")){ %> <%="selected"%> <%}%> value="<%=resultBrand.getInt("BRANDID")%>"><%=resultBrand.getString("BRANDNAME")%></option>
 						<%
+<<<<<<< Updated upstream:src/main/webapp/editcar.jsp
 							}
+=======
+							}	
+>>>>>>> Stashed changes:WebContent/editcar.jsp
 						%>	
 					</select>
 				</div>
@@ -75,9 +82,12 @@
 				      <select class="form-control" id="type" name="type">
 						<%
 <<<<<<< Updated upstream:src/main/webapp/editcar.jsp
+<<<<<<< Updated upstream:src/main/webapp/editcar.jsp
 							try {
 							Connection connection = new DbConnection().getConn();
 							Statement statement = connection.createStatement();
+=======
+>>>>>>> Stashed changes:WebContent/editcar.jsp
 =======
 >>>>>>> Stashed changes:WebContent/editcar.jsp
 							String sqlType = "select * from cartype";
@@ -97,6 +107,7 @@
 				</div>
 				<div class="col-6">
 				    <select class="form-control" id="fuel" name="fuel">
+						<option <%if(resultSet.getString("CARFUELTYPE").equals("Diesel")){ %> <%="selected"%> <%}%> value="Petrol">Petrol</option>
 						<option <%if(resultSet.getString("CARFUELTYPE").equals("Diesel")){ %> <%="selected"%> <%}%> value="Diesel">Diesel</option>
 						<option <%if(resultSet.getString("CARFUELTYPE").equals("Ethanol")){ %> <%="selected"%> <%}%> value="Ethanol">Ethanol</option>
 						<option <%if(resultSet.getString("CARFUELTYPE").equals("Bio Diesel")){ %> <%="selected"%> <%}%> value="Bio Diesel">Bio Diesel</option>
@@ -109,16 +120,7 @@
 			        <label for="capacity" class="col-sm-5 col-form-label">Capacity</label>
 			    </div>
 			    <div class="col-6">
-			       <select class="form-control" id="capacity" name="capacity">
-						<%
-							for(int i = 2; i < 13; i++)
-							{		
-						%>
-							<option <%if(resultSet.getInt("CARCAPACITY") == i){ %> <%="selected"%> <%}%> value="<%=i%>"><%=i%></option>
-						<%
-							}
-						%>	
-					</select>
+					<input type="number" value="<%=resultSet.getInt("CARCAPACITY")%>" class="form-control"  id="capacity" name="capacity" min="2" max="20">
 			    </div>
 			</div>
 			<div class="form-group row">

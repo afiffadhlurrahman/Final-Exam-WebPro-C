@@ -3,6 +3,10 @@
 <%@ include file="include/header2.jsp"%>
 
 
+<<<<<<< Updated upstream:src/main/webapp/createcar.jsp
+=======
+<% if(session == null || session.getAttribute("username") == null){ response.sendRedirect("car.jsp"); }%>
+>>>>>>> Stashed changes:WebContent/createcar.jsp
 
 <h2 class="text-info">Create New Car</h2>
 
@@ -24,7 +28,7 @@
 			<div class="col-6">
 				<select class="form-control" id="transmition" name="transmition">
 					<option value="Manual">Manual</option>
-					<option value="Matic">Matic</option>
+					<option value="Matic">Automatic</option>
 				</select>
 			</div>
 		</div>
@@ -93,6 +97,7 @@
 			</div>
 			<div class="col-6">
 				<select class="form-control" id="fuel" name="fuel">
+					<option value="Petrol">Petrol</option>
 					<option value="Diesel">Diesel</option>
 					<option value="Ethanol">Ethanol</option>
 					<option value="Bio Diesel">Bio Diesel</option>
@@ -105,16 +110,7 @@
 				<label for="capacity" class="col-sm-5 col-form-label">Capacity</label>
 			</div>
 			<div class="col-6">
-				<select class="form-control" id="capacity" name="capacity">
-					<%
-						for(int i = 2; i < 13; i++)
-						{		
-					%>
-							<option value="<%=i%>"><%=i%></option>
-					<%
-						}
-					%>
-				</select>
+				<input type="number" id="capacity" name="capacity" min="2" max="20">
 			</div>
 		</div>
 		<div class="form-group row">

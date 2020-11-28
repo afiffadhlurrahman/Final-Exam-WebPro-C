@@ -4,6 +4,12 @@
 <%@ include file="include/header2.jsp"%>
 
 <% if (session != null && session.getAttribute("username") != null) { %>
+	
+	<% String status = (String) request.getAttribute("status"); %>
+	<% if (status != null) { %>
+		<script> alert("<%=status%>")</script>
+	<% request.setAttribute("status", null); 
+	} %>
 
 
 <h1>Profile</h1>
@@ -16,14 +22,18 @@
 		ResultSet resultSet = statement.executeQuery(sql);
 		
 		resultSet.next();
+		
+		if(resultSet.getString("userroles").equals("User")){
+			%><div class="btn-danger col-12"><p>Update your profile to get verified account</p></div><%	
+		}
 %>
 
-<div class="bg-white shadow rounded">
+<div class="bg-white shadow rounded" style="padding-bottom: 50px">
 	<div class="px-4 pt-0 pb-4 bg-dark">
 		<div class="media align-items-end profile-header">
 			<div class="profile mr-3">
 				<img src="img/<%=resultSet.getString("userpicture")%>" width="130" class="rounded mb-2 img-thumbnail">
-				<a href="#" class="btn btn-dark btn-sm btn-block">Edit profile</a>
+				<a href="editprofile.jsp" class="btn btn-dark btn-sm btn-block">Edit profile</a>
 			</div>
 			
 			<div class="media-body mb-5 text-white">
@@ -36,35 +46,55 @@
 							%>Not Set<%
 						}
 						else{
-							Statement statementCity = connection.createStatement();
-							String sqlCity = "SELECT * FROM city LEFT JOIN state ON state.STATEID = city.STATEID WHERE cityid=" 
-									+ String.valueOf(city_id);
-							ResultSet resultSetCity = statement.executeQuery(sqlCity);
-							
-							resultSetCity.next();
-							%> <%=resultSetCity.getString("cityname") + ", " + resultSetCity.getString("statename") %> <% 
+							try{
+								Statement statementCity = connection.createStatement();
+								String sqlCity = "SELECT * FROM city LEFT JOIN state ON state.STATEID = city.STATEID WHERE cityid=" 
+										+ String.valueOf(city_id);
+								ResultSet resultSetCity = statementCity.executeQuery(sqlCity);
+								
+								resultSetCity.next();
+								%> <%=resultSetCity.getString("cityname") + ", " + resultSetCity.getString("statename") %> <% 
+							} catch(Exception e){
+								e.printStackTrace();
+							}
 						}
 					%>
 				</p>
 			</div>
 		</div>
 	</div>
+	
+	<div style="margin-top: 100px;">
+		<table class="table">
+			<tbody>
+				<tr class="d-flex">
+					<td class="col-3">Username</td>
+					<td class="col-9"><%= resultSet.getString("username") %></td>
+				</tr>
+				<tr class="d-flex">
+					<td class="col-3">Email</td>
+					<td class="col-9"><%= resultSet.getString("useremail") %></td>
+				</tr>
+				<tr class="d-flex">
+					<td class="col-3">Phone</td>
+					<td class="col-9"><%if(resultSet.getString("userphone") == null){ %> Not Set <% } else { %> <%=resultSet.getString("userphone")%> <%}%></td>
+				</tr>
+				<tr class="d-flex">
+					<td class="col-3">Address</td>
+					<td class="col-9"><%if(resultSet.getString("useraddress") == null){ %> Not Set <% } else { %> <%=resultSet.getString("useraddress")%> <%}%></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 
-<%
-		connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	} else {
-
-//response.sendRedirect("index.jsp");
+<% 
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+} else {
+	response.sendRedirect("index.jsp");
 }
 %>
-
-<%@ include file="include/footer.jsp"%>
-
-
 
 <%@ include file="include/footer.jsp"%>
