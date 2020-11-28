@@ -79,7 +79,7 @@
 						<%=resultSet.getString("CARCAPACITY")%>
 					</td>
 					<td>
-						<a href="#" class="btn btn-primary btn m-1" role="button">Rent</a>
+						<a href="rent.jsp?carid=<%=resultSet.getString("CARID")%>" class="btn btn-primary btn m-1" role="button">Rent</a>
 		            	<a href="editcar.jsp?carid=<%=resultSet.getString("CARID")%>" class="btn btn-success btn m-1" role="button">Edit</a>
 		            </td>
 				</tr>

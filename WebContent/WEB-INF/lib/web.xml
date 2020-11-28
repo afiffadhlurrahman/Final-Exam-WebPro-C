@@ -55,7 +55,7 @@
 		<url-pattern>/editcarServlet</url-pattern>
 	</servlet-mapping>
 	
-		<servlet>
+	<servlet>
 		<servlet-name>editprofile</servlet-name>
 		<servlet-class>jdbc.EditProfile</servlet-class>
 	</servlet>
@@ -63,5 +63,14 @@
 	<servlet-mapping>
 		<servlet-name>editprofile</servlet-name>
 		<url-pattern>/editProfileServlet</url-pattern>
+
+	<servlet>
+		<servlet-name>editcarrent</servlet-name>
+		<servlet-class>jdbc.EditCarrent</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>editcarrent</servlet-name>
+		<url-pattern>/editcarrentServlet</url-pattern>
 	</servlet-mapping>
 </web-app>
