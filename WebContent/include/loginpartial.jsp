@@ -4,7 +4,7 @@
 <ul class="navbar-nav">
 	<%if(session != null && session.getAttribute("username") != null) { %>
     <li class="nav-item">
-        <a class="nav-link text-dark" href="#">Hello <%=session.getAttribute("email") %></a>
+        <a class="nav-link text-dark" href="profile.jsp">Hello <%=session.getAttribute("email") %></a>
     </li>
     <li class="nav-item">
     	<form action="Logout" method="post">
