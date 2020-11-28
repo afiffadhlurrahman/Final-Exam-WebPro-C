@@ -4,7 +4,7 @@
 <title>Catch-a-Rides</title>
 <%@ include file="include/header2.jsp"%>
 
-
+<% if(session == null || session.getAttribute("username") == null){ response.sendRedirect("car.jsp"); }%>
 
 <h2 class="text-info">Create New Car</h2>
 

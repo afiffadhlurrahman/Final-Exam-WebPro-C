@@ -171,7 +171,8 @@
 					<input type="password" class="form-control" name="confirmpassword" placeholder="Confirmation New Password" value="">
 				</div>
 			</div>
-
+			
+			<!--
 			<div class="form-group row">
 				<div class="col-3">
 					<label for="" class="col-sm-8 col-form-label">Change Picture</label>
@@ -180,6 +181,7 @@
 					<input type="file" name="picture" accept="image/gif, image/jpeg, image/png">
 				</div>
 			</div>
+			-->
 			
 			<div class="form-group row">
 				<div class="col-3 offset-3">

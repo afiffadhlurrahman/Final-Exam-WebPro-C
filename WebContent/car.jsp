@@ -4,15 +4,17 @@
 <title>Catch-a-Rides</title>
 <%@ include file="include/header2.jsp"%>
 
-
 <body>
 	<div class="container row p-0 m-0">
 		<div class="col-9">
 	        <h2 class="text-info">Car List</h2>
 	    </div>
+	    
+	    <% if(session != null && session.getAttribute("username") != null){ %>
 	    <div class="col-3">
 	        <a href="createcar.jsp" class="btn btn-info form-control text-white">Create New Car </a>
 	    </div>
+	    <%} %>
     
 		<div class="col-12 border p-3 mt-3">
 			<table class="table table-striped border">
@@ -80,7 +82,9 @@
 					</td>
 					<td>
 						<a href="rent.jsp?carid=<%=resultSet.getString("CARID")%>" class="btn btn-primary btn m-1" role="button">Rent</a>
-		            	<a href="editcar.jsp?carid=<%=resultSet.getString("CARID")%>" class="btn btn-success btn m-1" role="button">Edit</a>
+		            	<% if(session != null && session.getAttribute("username") != null){ %>
+		            		<a href="editcar.jsp?carid=<%=resultSet.getString("CARID")%>" class="btn btn-success btn m-1" role="button">Edit</a>
+						<%} %>
 		            </td>
 				</tr>
 				<%

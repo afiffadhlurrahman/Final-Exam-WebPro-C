@@ -1,5 +1,8 @@
 package jdbc;
 
+import java.io.*;
+import java.util.*;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -10,7 +13,11 @@ import java.sql.Statement;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.text.*;
+import java.util.regex.*;
 
+import javax.servlet.*;
+import javax.servlet.http.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -20,17 +27,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.*;
+import org.apache.tomcat.util.http.fileupload.disk.*;
+import org.apache.tomcat.util.http.fileupload.servlet.*;
 import com.google.gson.Gson;
 
 /**
  * Servlet implementation class EditProfile
  */
 @WebServlet("/EditProfile")
-@MultipartConfig(
-        fileSizeThreshold = 1024 * 10,  // 10 KB
-        maxFileSize = 1024 * 300,       // 300 KB
-        maxRequestSize = 1024 * 1024    // 1 MB 
-)
+@MultipartConfig()
 public class EditProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -136,17 +142,18 @@ public class EditProfile extends HttpServlet {
 				ps.executeUpdate();
 				
 				conn.close();
-				
 				if(trySet && !setPassword) {
 					request.setAttribute("status", "Confirmation Password didn't match!");
 					RequestDispatcher rd = request.getRequestDispatcher("editprofile.jsp");	
 					rd.forward(request, response);
 				} else {
+					HttpSession session = request.getSession();
+					session.setAttribute("userroles", "Verified User");
+					
 					request.setAttribute("status", "Your Profile has been updated!");
 					RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");	
 					rd.forward(request, response);			
 				}
-				
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {

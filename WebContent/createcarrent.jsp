@@ -4,7 +4,10 @@
 <title>Catch-a-Rides</title>
 <%@ include file="include/header2.jsp"%>
 
+<% if (session != null && session.getAttribute("username") != null) { %>
+
 <h2 class="text-info">Create New Rent Car</h2>
+<p> This is your can rent to other users.</p>
 
 <div class="border container" style="padding: 30px;">
 	<form method="post" action="CreateCarrent">
@@ -34,30 +37,9 @@
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="col-3">
-				<label for="inputNameUser" class="col-sm-10 col-form-label">Tenant Name</label>
-			</div>
-			<div class="col-6">
-				<select class="form-control" id="tenant" name="tenant">
-					<%
-						try {
-						connection = DriverManager.getConnection(connectionUrl + database, userid, password);
-						statement = connection.createStatement();
-						String sql = "select * from user";
-						resultSet = statement.executeQuery(sql);
-						while (resultSet.next()) {
-					%>
-					<option value="<%=resultSet.getInt("USERID")%>"> <%=resultSet.getString("USERFIRSTNAME") + " " + resultSet.getString("USERLASTNAME")%> </option>
-					<%
-						}
-						connection.close();
-						} catch (Exception e) {
-						e.printStackTrace();
-						}
-					%>
-				</select>
-			</div>
+			<input type="hidden" class="form-control" name="tenant" value="<%=session.getAttribute("userid") %>">
 		</div>
+		
 		<div class="form-group row">
 			<div class="col-3">
 				<label for="inputLicense" class="col-sm-10 col-form-label">Car License Number</label>
@@ -113,5 +95,11 @@
 		</div>
 	</form>
 </div>
+
+<% 
+} else {
+	response.sendRedirect("index.jsp");
+}
+%>
 
 <%@ include file="include/footer.jsp"%>

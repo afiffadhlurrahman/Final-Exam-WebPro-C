@@ -15,8 +15,8 @@
                             <a href='index.jsp' class="nav-link text-dark">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href='car.jsp' class="nav-link text-dark">Car</a>
-                        </li>
+							<a href='car.jsp' class="nav-link text-dark">Car</a>
+						</li>
                     </ul>
                 </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"> 

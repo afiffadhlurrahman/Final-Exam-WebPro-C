@@ -7,10 +7,12 @@
 	<div class="col-9">
 	        <h2 class="text-info">Car Rent</h2>
 	</div>
-		    
+	
+	<% if(session != null && session.getAttribute("username") != null){ %>
 	<div class="col-3">
 	        <a href="createcarrent.jsp" class="btn btn-info form-control text-white">Create New Rent Car </a>
 	</div>
+	<%} %>
 </div>
 <br>
 
@@ -20,7 +22,7 @@
 		String carId1 = request.getParameter("carid");
 		connection = DriverManager.getConnection(connectionUrl + database, userid, password);
 		statement = connection.createStatement();
-		String sql = "select * from car,cartype,user,carrent where car.cartypeid = cartype.cartypeid and user.userid = carrent.userid and carrent.carid=car.carid and car.carid = "+ carId1;
+		String sql = "select * from car,cartype,users,carrent where car.cartypeid = cartype.cartypeid and users.userid = carrent.userid and carrent.carid=car.carid and car.carid = "+ carId1;
 		resultSet = statement.executeQuery(sql);
 		while (resultSet.next()) {
 %>	    
@@ -97,15 +99,17 @@
 			</div>
 			<div class="form-group row">
 				<div class="col-2 offset-3">
+					<a href="car.jsp" class="btn btn-success form-control">Back to List</a>
+				</div>
+				
+				<% if(session != null && session.getAttribute("username") != null){ %>
+				<div class="col-2">
 					<a href="editcarrent.jsp?carrentid=<%=resultSet.getString("CARRENTID")%>" class="btn btn-primary form-control" role="button"> Edit </a>
 				</div>
 				<div class="col-2">
-					<a href="car.jsp" class="btn btn-success form-control">Back to
-						List</a>
-				</div>	
-				<div class="col-2">
 					<a href="deletecarrent.jsp?carrentid=<%=resultSet.getString("CARRENTID")%>" class="btn btn-danger form-control" role="button"> Delete </a>
-				</div>	
+				</div>
+				<%} %>
 			</div>
 		</form>
 	</div>

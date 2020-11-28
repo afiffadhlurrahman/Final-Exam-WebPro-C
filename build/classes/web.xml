@@ -74,7 +74,7 @@
 		<servlet-name>editcarrent</servlet-name>
 		<url-pattern>/editcarrentServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>createcarrent</servlet-name>
 		<servlet-class>jdbc.CreateCarrent</servlet-class>
@@ -84,4 +84,5 @@
 		<servlet-name>createcarrent</servlet-name>
 		<url-pattern>/createcarrentServlet</url-pattern>
 	</servlet-mapping>
+
 </web-app>
