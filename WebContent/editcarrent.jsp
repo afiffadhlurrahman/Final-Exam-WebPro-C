@@ -11,7 +11,7 @@
 		String carId1 = request.getParameter("carrentid");
 		connection = DriverManager.getConnection(connectionUrl + database, userid, password);
 		statement = connection.createStatement();
-		String sql = "select * from car,cartype,user,carrent where car.cartypeid = cartype.cartypeid and user.userid = carrent.userid and carrent.carid=car.carid and car.carid = "+ carId1;
+		String sql = "select * from car,cartype,user,carrent where car.cartypeid = cartype.cartypeid and user.userid = carrent.userid and carrent.carid=car.carid and carrent.carrentid = "+ carId1;
 		resultSet = statement.executeQuery(sql);
 		resultSet.next();
 	%>
@@ -64,8 +64,8 @@
 				</div>
 				<div class="col-6">
 				     <select class="form-control" id="status" name="status">
-						<option <%if(resultSet.getInt("CARRENTSTATUS") == 1){ %> <%="selected"%> <%}%> value="1">Not Available</option>
-  						<option <%if(resultSet.getInt("CARRENTSTATUS") == 0){ %> <%="selected"%> <%}%> value="0">Available</option>		
+						<option <%if(resultSet.getInt("CARRENTSTATUS") == 1){ %> <%="selected"%> <%}%> value="1">Available</option>
+  						<option <%if(resultSet.getInt("CARRENTSTATUS") == 0){ %> <%="selected"%> <%}%> value="0">Not Available</option>		
 					</select>	
 				</div>
 			</div>
