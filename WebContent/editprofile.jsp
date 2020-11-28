@@ -2,9 +2,10 @@
 <%@ include file="include/header.jsp"%>
 	<title>MyProfile</title>
 	<link rel="stylesheet" href="css/authstyle.css">
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script>
 		$(document).ready(function() {
+			$('#state').ready(function() {  fillOptions('city'); });
 			$('#state').change(function() { fillOptions('city'); });
 		});
 		function fillOptions(dropdownId) {
@@ -26,14 +27,20 @@
 
 <% if (session != null && session.getAttribute("username") != null) { %>
 
+	<% String status = (String) request.getAttribute("status"); %>
+	<% if (status != null) { %>
+		<script> alert("<%=status%>")</script>
+	<% request.setAttribute("status", null); 
+	} %>
 
 <h1 id="content-title">Edit Profile</h1>
+
 
 <%
 	try {
 		connection = DriverManager.getConnection(connectionUrl + database, userid, password);
 		statement = connection.createStatement();
-		String sql = "Select * From USERS, CITY, STATE Where users.cityid = city.cityid and state.stateid = city.stateid and userid=" + session.getAttribute("userid");
+		String sql = "Select * From USERS LEFT JOIN CITY on users.cityid = city.cityid LEFT JOIN STATE on state.stateid = city.stateid WHERE userid=" + session.getAttribute("userid");
 		resultSet = statement.executeQuery(sql);
 		
 		resultSet.next();
@@ -44,7 +51,7 @@
 		<div class="media align-items-end profile-header">
 			<div class="profile mr-3">
 				<img src="img/<%=resultSet.getString("userpicture")%>" width="130" class="rounded mb-2 img-thumbnail">
-				<a href="profile.jsp" class="btn btn-dark btn-sm btn-block">Go to Profile</a>
+				<a href="profile.jsp" class="btn btn-dark btn-sm btn-block">View Profile</a>
 			</div>
 			
 			<div class="media-body mb-5 text-white">
@@ -75,9 +82,9 @@
 		</div>
 	</div>
 	
-	
 	<div style="margin-top: 100px;">
 		<form method="post" action="EditProfile" enctype = "multipart/form-data">
+
 			<div class="form-group row">
 				<div class="col-3">
 					<label for="" class="col-sm-2 col-form-label">Name</label>
@@ -104,7 +111,7 @@
 					<label for="" class="col-sm-2 col-form-label">Phone</label>
 				</div>
 				<div class="col-6">
-					<input type="text" class="form-control" name="phone" placeholder="Phone" value="<%if(resultSet.getString("userphone") != null) { %> <%=resultSet.getString("userphone")%> <%}%>">
+					<input type="tel" pattern="[0-9]{10-14}" class="form-control" name="phone" placeholder="Phone" value="<%if(resultSet.getString("userphone") != null) { %> <%=resultSet.getString("userphone")%> <%}%>" required>
 				</div>
 			</div>
 			
@@ -113,7 +120,7 @@
 					<label for="" class="col-sm-2 col-form-label">Address</label>
 				</div>
 				<div class="col-6">
-					<textarea class="form-control" name="address" placeholder="Address"><%if(resultSet.getString("useraddress") != null) { %> <%=resultSet.getString("useraddress")%> <%}%></textarea>
+					<textarea class="form-control" name="address" placeholder="Address" required><%if(resultSet.getString("useraddress") != null) { %> <%=resultSet.getString("useraddress")%> <%}%></textarea>
 				</div>
 			</div>
 			
@@ -131,7 +138,7 @@
 
 							while (resultState.next()) {
 						%>
-						<option <%if(resultSet.getInt("stateid") == resultState.getInt("stateid")){ %> <%="selected"%> <%}%> value="<%=resultState.getInt("stateid")%>" ><%=resultState.getString("statename")%></option>
+						<option <%if(resultSet.getInt("stateid") == resultState.getInt("stateid")){ %> <%="selected"%> <%}%> value="<%=resultState.getInt("stateid")%>" required><%=resultState.getString("statename")%></option>
 						<%
 							}
 							connection.close();
@@ -173,7 +180,7 @@
 					<input type="file" name="picture" accept="image/gif, image/jpeg, image/png">
 				</div>
 			</div>
-
+			
 			<div class="form-group row">
 				<div class="col-3 offset-3">
 					<input type="submit" value="Save Edit"
@@ -189,6 +196,7 @@
 </div>
 
 <% 
+	connection.close();
 	} catch (Exception e) {
 		e.printStackTrace();
 	}

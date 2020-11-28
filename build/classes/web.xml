@@ -56,6 +56,16 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>editprofile</servlet-name>
+		<servlet-class>jdbc.EditProfile</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>editprofile</servlet-name>
+		<url-pattern>/editProfileServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>editcarrent</servlet-name>
 		<servlet-class>jdbc.EditCarrent</servlet-class>
 	</servlet>
