@@ -5,6 +5,12 @@
 <%@ include file="include/header2.jsp"%>
 
 <% if (session != null && session.getAttribute("username") != null) { %>
+	
+	<% String status = (String) request.getAttribute("status"); %>
+	<% if (status != null) { %>
+		<script> alert("<%=status%>")</script>
+	<% request.setAttribute("status", null); 
+	} %>
 
 
 <h1>Profile</h1>
@@ -17,6 +23,10 @@
 		resultSet = statement.executeQuery(sql);
 		
 		resultSet.next();
+		
+		if(resultSet.getString("userroles").equals("User")){
+			%><div class="btn-danger col-12"><p>Update your profile to get verified account</p></div><%	
+		}
 %>
 
 <div class="bg-white shadow rounded" style="padding-bottom: 50px">
